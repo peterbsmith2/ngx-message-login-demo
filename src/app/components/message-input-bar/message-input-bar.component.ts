@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cris-message-input-bar',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-input-bar.component.css']
 })
 export class MessageInputBarComponent implements OnInit {
+  @Output() send: EventEmitter<any> = new EventEmitter();
+  @Output() toggle: EventEmitter<any> = new EventEmitter();
+  @Output() select: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
