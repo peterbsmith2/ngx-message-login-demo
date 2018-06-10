@@ -8,6 +8,17 @@ import { MessageInputBarComponent } from './components/message-input-bar/message
 import { FutureToggleComponent } from './components/future-toggle/future-toggle.component';
 import { SendComponent } from './components/send/send.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { EffectsModule } from '@ngrx/effects';
+import { ConversationEffects } from './effects/conversation.effects';
+import { MessageEffects } from './effects/message.effects';
+import { TagEffects } from './effects/tag.effects';
+import { HttpClientModule } from '@angular/common/http';
+
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+
 @NgModule({
   declarations: [
     HomePageComponent,
@@ -18,7 +29,11 @@ import { SendComponent } from './components/send/send.component';
     SendComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ConversationEffects, MessageEffects, TagEffects]),
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [HomePageComponent]
